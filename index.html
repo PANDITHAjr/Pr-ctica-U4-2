@@ -3,85 +3,103 @@
 
 <head>
     <title>Formulario de contacto</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Foundation CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
-    <!-- Material Design CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Incluir los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Incluir los estilos de Foundation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
+
+    <!-- Incluir los estilos de Material Design -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.css">
+
+    <!-- Incluir el script de JavaScript para validar el formulario -->
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var birthdate = document.getElementById('birthdate').value;
+
+            if (name == "" || email == "" || phone == "" || birthdate == "") {
+                alert("Por favor, complete todos los campos del formulario.");
+                return false;
+            }
+
+            // Validar el formato del correo electrónico
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, ingrese una dirección de correo electrónico válida.");
+                return false;
+            }
+
+            // Validar el formato del número de teléfono
+            var phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Por favor, ingrese un número de teléfono válido (10 dígitos sin espacios ni guiones).");
+                return false;
+            }
+
+            // Validar que la fecha de nacimiento sea una fecha válida
+            var birthdateRegex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!birthdateRegex.test(birthdate)) {
+                alert("Por favor, ingrese una fecha de nacimiento válida (formato: AAAA-MM-DD).");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
-        <h2>Formulario de contacto</h2>
-        <form id="contactForm" onsubmit="return validarFormulario()">
+        <h1>Formulario de contacto</h1>
+        <form onsubmit="return validateForm()">
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
+                <label for="name">Nombre:</label>
+                <input type="text" class="form-control" id="name" required>
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico"
-                    required>
+                <input type="email" class="form-control" id="email" required>
             </div>
             <div class="form-group">
-                <label for="celular">Celular:</label>
-                <input type="tel" class="form-control" id="celular" placeholder="Ingrese su número de celular" required>
+                <label for="phone">Celular:</label>
+                <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
             </div>
             <div class="form-group">
-                <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" id="fechaNacimiento" required>
+                <label for="birthdate">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" id="birthdate" required>
             </div>
             <div class="form-group">
-                <label for="pais">País:</label>
-                <select class="form-control" id="pais" required>
+                <label for="country">País:</label>
+                <select class="form-control" id="country" required>
+                    <option value="">Seleccione un país</option>
                     <option value="">Seleccione un país</option>
                     <option value="Argentina">Argentina</option>
                     <option value="Brasil">Brasil</option>
+                    <option value="Chile">Chile</option>
                     <option value="Colombia">Colombia</option>
                     <option value="México">México</option>
                     <option value="Perú">Perú</option>
+                    <option value="España">España</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Foundation JS -->
-    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
-    <!-- Material Design JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Incluir los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script>
-        function validarFormulario() {
-            // Obtener los valores de los campos de entrada
-            var nombre = document.getElementById('nombre').value;
-            var email = document.getElementById('email').value;
-            var celular = document.getElementById('celular').value;
-            var fechaNacimiento = document.getElementById('fechaNacimiento').value;
-            var pais = document.getElementById('pais').value;
+    <!-- Incluir los scripts de Foundation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
 
-            // Validar los campos
-            if (nombre === ""
-  // Validar los campos
-  if (nombre === "" || email === "" || celular === "" || fechaNacimiento === "" || pais === "") {
-                    alert("Por favor, complete todos los campos del formulario.");
-                    return false;
-                }
-
-            // Mostrar mensaje de éxito
-            alert("¡Formulario enviado con éxito!");
-
-            // Restablecer el formulario
-            document.getElementById("contactForm").reset();
-
-            return false;
-        }
-    </script>
+    <!-- Incluir los scripts de Material Design -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
 </body>
 
 </html>
