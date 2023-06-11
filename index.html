@@ -1,56 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Formulario de contacto</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Foundation CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
-  <!-- Material Design CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
-<body>
-  <div class="container">
-    <h2>Formulario de contacto</h2>
-    <form>
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-      </div>
-      <div class="form-group">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
-      </div>
-      <div class="form-group">
-        <label for="celular">Celular:</label>
-        <input type="tel" class="form-control" id="celular" placeholder="Ingrese su número de celular">
-      </div>
-      <div class="form-group">
-        <label for="fechaNacimiento">Fecha de nacimiento:</label>
-        <input type="date" class="form-control" id="fechaNacimiento">
-      </div>
-      <div class="form-group">
-        <label for="pais">País:</label>
-        <select class="form-control" id="pais">
-          <option value="">Seleccione un país</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Brasil">Brasil</option>
-          <option value="Colombia">Colombia</option>
-          <option value="México">México</option>
-          <option value="Perú">Perú</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Foundation JS -->
-  <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
-  <!-- Material Design JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<head>
+    <title>Formulario de contacto</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Foundation CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+    <!-- Material Design CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Formulario de contacto</h2>
+        <form id="contactForm" onsubmit="return validarFormulario()">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input type="tel" class="form-control" id="celular" placeholder="Ingrese su número de celular" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" id="fechaNacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select class="form-control" id="pais" required>
+                    <option value="">Seleccione un país</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="México">México</option>
+                    <option value="Perú">Perú</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Foundation JS -->
+    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+    <!-- Material Design JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        function validarFormulario() {
+            // Obtener los valores de los campos de entrada
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+            var celular = document.getElementById('celular').value;
+            var fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            var pais = document.getElementById('pais').value;
+
+            // Validar los campos
+            if (nombre === ""
+  // Validar los campos
+  if (nombre === "" || email === "" || celular === "" || fechaNacimiento === "" || pais === "") {
+                    alert("Por favor, complete todos los campos del formulario.");
+                    return false;
+                }
+
+            // Mostrar mensaje de éxito
+            alert("¡Formulario enviado con éxito!");
+
+            // Restablecer el formulario
+            document.getElementById("contactForm").reset();
+
+            return false;
+        }
+    </script>
 </body>
+
 </html>
